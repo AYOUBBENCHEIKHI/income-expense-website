@@ -151,3 +151,35 @@ django_heroku.settings(locals())
 MESSAGE_TAGS ={
     messages.ERROR: 'danger',
 }
+
+#email stuff
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Change si tu utilises un autre fournisseur
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') 
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL =os.environ.get('EMAIL_HOST_USER') 
+
+
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+# Activer les logs pour SMTP
+"""import logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}"""
