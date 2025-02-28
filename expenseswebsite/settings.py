@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path 
 import os
 import django_heroku
+from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'expenses',
-    'authentication'
+    'authentication',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     
 ]
 
 ROOT_URLCONF = 'expenseswebsite.urls'
@@ -144,3 +147,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configure Django for Heroku
 django_heroku.settings(locals())
+
+MESSAGE_TAGS ={
+    messages.ERROR: 'danger',
+}
