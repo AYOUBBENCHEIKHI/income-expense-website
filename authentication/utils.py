@@ -6,4 +6,4 @@ class AppTokenGenerator(PasswordResetTokenGenerator):
     
 
 
-token_generator = AppTokenGenerator()
+account_activation_token = AppTokenGenerator()
