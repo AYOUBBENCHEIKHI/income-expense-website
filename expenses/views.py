@@ -11,8 +11,8 @@ from django.http import JsonResponse
 def search_expenses(request):
     if request.method ==   'POST':
         search_str = json.loads(request.body).get('searchText') 
-        expenses = Expense.objects.filter(owner=request.user,amount__starts_with=search_str)|Expense.objects.filter(
-            owner=request.user,date__starts_with=search_str)|Expense.objects.filter(
+        expenses = Expense.objects.filter(owner=request.user,amount__istartswith=search_str)|Expense.objects.filter(
+            owner=request.user,date__istartswith=search_str)|Expense.objects.filter(
                 owner=request.user,description__icontains=search_str)|Expense.objects.filter(
                 owner=request.user,category__icontains=search_str)
         
